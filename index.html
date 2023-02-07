@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+
+    <!-- extra -->
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
+    <script>
+        let a;
+        let date;
+        let time;
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        setInterval(() => {
+            a = new Date();
+            date = a.toLocaleDateString(undefined, options);
+            time = a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
+            document.getElementById('time').innerHTML = time + "<br>on " + date;
+        }, 1000);
+    </script>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="https://linktr.ee/AYON_SSP">🌐 WebSite ayonssp </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">🏠 Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/about">🪴 About Us </a>
+                </li>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/docs">📄 Documentation </a>
+                </li>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        👷‍♂️ Services
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/services"> Freelancing </a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/contact">📞 Contact Us </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="/contact" tabindex="-1" aria-disabled="true"> Build in Just one
+                        Night </a>
+                </li>
+                <li class="nav-item">
+                </li>
+            </ul>
+            <div class="custom-control custom-switch mr-5">
+                <input id="chkToggle2" type="checkbox" checked data-toggle="toggle" data-onstyle="outline-light"
+                    data-offstyle="outline-dark" data-style="border">
+            </div>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+
+    <div class="container my-4">
+        <div class="jumbotron">
+            <h1 class="display-4">⌚ Current time Is: <span id="time"></span></h1>
+            <p class="lead">We have got you covered. This is a simple hero unit, a simple jumbotron-style component for
+                calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>We are here to show you the time for different countries</p>
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Country:</label>
+                    <input type="text" class="form-control" id="cntry">
+                </div>
+
+            </form>
+            <button class="btn btn-primary btn-lg" onclick="seTi()">⌛ Browse Times</button>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $('#chkToggle2').change(function () {
+                if ($(this).prop('checked')) {
+                    document.getElementsByTagName('nav')[0].classList.replace('navbar-light', 'navbar-dark');
+                    document.getElementsByTagName('nav')[0].classList.replace('bg-light', 'bg-dark');
+                } else {
+                    document.getElementsByTagName('nav')[0].classList.replace('navbar-dark', 'navbar-light');
+                    document.getElementsByTagName('nav')[0].classList.replace('bg-dark', 'bg-light');
+                    // $('nav').removeClass('navbar-dark');
+                    // $('nav').removeClass('bg-dark');
+                    // $('nav').addClass('navbar-light');
+                    // $('nav').addClass('bg-light');
+
+                }
+            })
+        })
+        function seTi() {
+            var ct = document.getElementById("cntry").value;
+            var URL = "https://www.google.com/search?q=" + ct + " time";
+            window.open(URL, "_blank");
+        }
+    </script>
+
+
+
+
+
+    <div class="container my-4">
+        <h2 class="text-center">TODOs List</h2>
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Add an item to the list</small>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+
+
+        <button id="add" class="btn btn-primary">Add to list</button>
+        <button id="clear" class="btn btn-primary" onclick="clearStorage()">Clear list</button>
+
+
+        <div id="items" class="my-4">
+            <h2>Your Items</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">SNo</th>
+                        <th scope="col">Item Title</th>
+                        <th scope="col">Item Description</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Get some Coffee</td>
+                        <td>You need coffee as you are a coder</td>
+                        <td><button class="btn btn-sm btn-primary">Delete</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <script>
+        function getAndUpdate() {
+            console.log("Updating List...");
+            tit = document.getElementById('title').value;
+            desc = document.getElementById('description').value;
+            if (localStorage.getItem('itemsJson') == null) {
+                itemJsonArray = [];
+                itemJsonArray.push([tit, desc]);
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+            }
+            else {
+                itemJsonArrayStr = localStorage.getItem('itemsJson')
+                itemJsonArray = JSON.parse(itemJsonArrayStr);
+                itemJsonArray.push([tit, desc]);
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+            }
+            update();
+        }
+
+        function update() {
+            if (localStorage.getItem('itemsJson') == null) {
+                itemJsonArray = [];
+                localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray))
+            }
+            else {
+                itemJsonArrayStr = localStorage.getItem('itemsJson')
+                itemJsonArray = JSON.parse(itemJsonArrayStr);
+            }
+            // Populate the table
+            let tableBody = document.getElementById("tableBody");
+            let str = "";
+            itemJsonArray.forEach((element, index) => {
+                str += `
+                <tr>
+                <th scope="row">${index + 1}</th>
+                <td>${element[0]}</td>
+                <td>${element[1]}</td> 
+                <td><button class="btn btn-sm btn-primary" onclick="deleted(${index})">Delete</button></td> 
+                </tr>`;
+            });
+            tableBody.innerHTML = str;
+        }
+        add = document.getElementById("add");
+        add.addEventListener("click", getAndUpdate);
+        update();
+        function deleted(itemIndex) {
+            console.log("Delete", itemIndex);
+            itemJsonArrayStr = localStorage.getItem('itemsJson')
+            itemJsonArray = JSON.parse(itemJsonArrayStr);
+            // Delete itemIndex element from the array
+            itemJsonArray.splice(itemIndex, 1);
+            localStorage.setItem('itemsJson', JSON.stringify(itemJsonArray));
+            update();
+
+        }
+        function clearStorage() {
+            if (confirm("Do you areally want to clear?")) {
+                console.log('Clearing the storage')
+                localStorage.clear();
+                update()
+            }
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
